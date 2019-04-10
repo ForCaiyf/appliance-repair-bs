@@ -9,7 +9,8 @@ public enum CodeEnum {
 
     /** 通用状态码 */
     SUCCESS(1000, "请求成功"),
-    PARAMETER_VALID_ERROR(1001, "参数异常");
+    PARAMETER_VALID_ERROR(1001, "参数异常"),
+    UNKNOWN_ERROR(1002, "未知错误");
 
     private Integer code;
     private String msg;
