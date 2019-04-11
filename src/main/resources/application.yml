@@ -13,6 +13,16 @@ spring:
     data-password: cyf1996
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 1
+    min-idle: 3
+    max-active: 10
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 30000
+    filters: stat,wall,slf4j
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    druid-admin: caiyf
+    druid-password: cyf1996
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 
