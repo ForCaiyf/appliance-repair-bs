@@ -1,10 +1,13 @@
 package com.caiyf.appliance.repair.bs.model.result;
 
+import lombok.Getter;
+
 /**
  * @desc 状态码
  * @date 2019/04/10
  * @author caiyf
  */
+@Getter
 public enum CodeEnum {
 
     /** 通用状态码 */
@@ -15,16 +18,9 @@ public enum CodeEnum {
     private Integer code;
     private String msg;
 
-    private CodeEnum(Integer code, String msg) {
+    CodeEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-    public String getMsg() {
-        return msg;
     }
 
 }

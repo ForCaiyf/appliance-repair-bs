@@ -1,0 +1,19 @@
+# 日志配置
+logging:
+  file: D:\Program Files\IDEAwork\logs\appliance-repair-bs.log
+  level:
+    root: error
+    org.springframework.web: debug
+
+# 数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/appliance_repair
+    data-username: root
+    data-password: cyf1996
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
