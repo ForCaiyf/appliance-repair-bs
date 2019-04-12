@@ -4,6 +4,7 @@ import com.caiyf.appliance.repair.bs.model.result.CodeEnum;
 import com.caiyf.appliance.repair.bs.model.result.Result;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @desc 异常处理器
@@ -18,6 +19,7 @@ public class ExceptionHandle {
      * @return
      */
     @ExceptionHandler(value = Exception.class)
+    @ResponseBody
     public Result handleException(Exception e) {
         // 自定义异常
         if (e instanceof BusinessException) {

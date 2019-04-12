@@ -1,10 +1,13 @@
 package com.caiyf.appliance.repair.bs.model.result;
 
+import lombok.Getter;
+
 /**
  * @desc 通用返回结果
  * @date 2019/04/10
  * @author caiyf
  */
+@Getter
 public class Result<T> {
 
     private Integer code;

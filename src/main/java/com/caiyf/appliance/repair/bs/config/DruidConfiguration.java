@@ -68,13 +68,13 @@ public class DruidConfiguration {
     }
 
     /**
-     * 关联监控数据filter配置
+     * 关联监控数据的filter配置
      * @return
      */
     public FilterRegistrationBean generateDruidFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
         filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+       // filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
     }
 
