@@ -26,6 +26,8 @@ import java.sql.SQLException;
 @ConfigurationProperties(prefix = ConfigConstant.DB_PREFIX)
 public class DruidConfiguration {
 
+    private static final String FILTER_URL_PATTERN = "/appliance-repair/*";
+
     private String url;
     private String dataUsername;
     private String dataPassword;
@@ -46,7 +48,7 @@ public class DruidConfiguration {
      * @return
      */
     @Bean
-    public DataSource getDruidDataSource() {
+    public DataSource initDruidDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl(url);
         dataSource.setUsername(dataUsername);
@@ -61,7 +63,7 @@ public class DruidConfiguration {
         try {
             dataSource.setFilters(filters);
         } catch (SQLException e) {
-            log.error("", e);
+            log.error("[init datasource error]", e);
         }
         dataSource.setConnectionProperties(connectionProperties);
         return dataSource;
@@ -71,10 +73,10 @@ public class DruidConfiguration {
      * 关联监控数据的filter配置
      * @return
      */
+    @Bean
     public FilterRegistrationBean generateDruidFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns("/*");
-       // filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        filterRegistrationBean.addUrlPatterns(FILTER_URL_PATTERN);
         return filterRegistrationBean;
     }
 
