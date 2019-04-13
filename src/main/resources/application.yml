@@ -25,5 +25,6 @@ spring:
     druid-password: cyf1996
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.caiyf.appliance.repair.bs.model.po
 
 

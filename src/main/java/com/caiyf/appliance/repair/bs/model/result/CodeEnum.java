@@ -13,7 +13,11 @@ public enum CodeEnum {
     /** 通用状态码 */
     SUCCESS(1000, "请求成功"),
     PARAMETER_VALID_ERROR(1001, "参数异常"),
-    UNKNOWN_ERROR(1002, "未知错误");
+    UNKNOWN_ERROR(1002, "未知错误"),
+
+    /** 工具错误码 */
+    ENCRYPT_ERROR(1100, "加密错误"),
+    DECRYPT_ERROR(1101, "解密错误");
 
     private Integer code;
     private String msg;

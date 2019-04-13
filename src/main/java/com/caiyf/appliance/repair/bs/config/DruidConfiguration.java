@@ -3,7 +3,7 @@ package com.caiyf.appliance.repair.bs.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
-import com.caiyf.appliance.repair.bs.model.constant.ConfigurationContant;
+import com.caiyf.appliance.repair.bs.model.constant.ConfigConstant;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -23,7 +23,7 @@ import java.sql.SQLException;
 @Slf4j
 @Setter
 @Configuration
-@ConfigurationProperties(prefix = ConfigurationContant.DB_PREFIX)
+@ConfigurationProperties(prefix = ConfigConstant.DB_PREFIX)
 public class DruidConfiguration {
 
     private String url;
