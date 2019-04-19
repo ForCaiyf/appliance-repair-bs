@@ -17,7 +17,10 @@ public enum CodeEnum {
 
     /** 工具错误码 */
     ENCRYPT_ERROR(1100, "加密错误"),
-    DECRYPT_ERROR(1101, "解密错误");
+    DECRYPT_ERROR(1101, "解密错误"),
+
+    /** 信息错误 */
+    NULL_REGION_ERROR(1200, "地区为空");
 
     private Integer code;
     private String msg;

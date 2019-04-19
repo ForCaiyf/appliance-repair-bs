@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caiyf.appliance.repair.bs.dao.RegionMapper">
+    <select id="getPoById" resultType="RegionPo">
+        <include refid="selectAll"/>
+        WHERE `id`=#{id} AND `is_deleted`=0;
+    </select>
+
+    <select id="getPoListByType" resultType="RegionPo">
+        <include refid="selectAll"/>
+        WHERE `type`=#{type} AND `is_deleted`=0;
+    </select>
+
+    <select id="getPoListByParentId" resultType="RegionPo">
+        <include refid="selectAll"/>
+        WHERE `parentId`=#{parentId} AND `is_deleted`=0;
+    </select>
+
+    <sql id="selectAll">
+        select `id`, `parentId`, `name`, `type` FROM `region`
+    </sql>
+</mapper>
