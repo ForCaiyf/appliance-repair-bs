@@ -53,9 +53,9 @@ CREATE TABLE `staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `num` int(6) NOT NULL DEFAULT 0 COMMENT '员工id',
   `name` varchar(8) NOT NULL DEFAULT '' COMMENT '员工姓名',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '员工密码',
-  `type` int(1) NOT NULL DEFAULT 0 COMMENT '员工类别',
-  `level` int(1) NOT NULL DEFAULT 0 COMMENT '员工级别',
+  `password` varchar(64) NOT NULL DEFAULT '' COMMENT '员工密码',
+  `type_id` int(1) NOT NULL DEFAULT 0 COMMENT '员工类别id',
+  `level_id` int(1) NOT NULL DEFAULT 0 COMMENT '员工级别id',
   `info_id` int(11) NOT NULL DEFAULT 0 COMMENT '员工信息表id',
   `agent_id` int(11) NOT NULL DEFAULT 0 COMMENT '经办人id',
   `info_filled` int(1) NOT NULL DEFAULT 1 COMMENT '个人信息是否完善（0-完善、1-不完善）',
@@ -64,4 +64,4 @@ CREATE TABLE `staff` (
   PRIMARY KEY `id_index` (`id`) COMMENT 'id主键'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '员工表';
 
-INSERT INTO `staff` (`num`, `name`, `password`, `type`, `level`, `info_id`) VALUE (888888, 'caiyf', 'cyf1996', 3, 3, 1);
+INSERT INTO `staff` (`num`, `name`, `password`, `type_id`, `level_id`, `info_id`) VALUE (888888, 'caiyf', 'hiRkqHZCzYU=', 3, 3, 1);
