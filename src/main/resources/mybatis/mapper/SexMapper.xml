@@ -8,4 +8,9 @@
         SELECT `id`, `sex` FROM `sex`
         WHERE `is_deleted`=0;
     </select>
+
+    <select id="getSexById" resultType="java.lang.String">
+        SELECT `sex` FROM `sex`
+        WHERE `id`=#{id} AND `is_deleted`=0;
+    </select>
 </mapper>

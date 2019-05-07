@@ -8,4 +8,9 @@
         SELECT `id`, `nation` FROM `nation`
         WHERE `is_deleted`=0;
     </select>
+
+    <select id="getNationById" resultType="java.lang.String">
+        SELECT `nation` FROM `nation`
+        WHERE `id`=#{id} AND `is_deleted`=0;
+    </select>
 </mapper>

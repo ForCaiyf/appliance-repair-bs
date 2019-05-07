@@ -4,5 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.caiyf.appliance.repair.bs.dao.StaffMapper">
-
+    <select id="getAllPo" resultType="StaffPo">
+        SELECT * FROM `staff`
+        WHERE `is_deleted`=0;
+    </select>
 </mapper>

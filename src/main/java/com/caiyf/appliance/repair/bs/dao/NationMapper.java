@@ -2,6 +2,7 @@ package com.caiyf.appliance.repair.bs.dao;
 
 import com.caiyf.appliance.repair.bs.model.po.NationPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,12 @@ public interface NationMapper {
      * @return
      */
     List<NationPo> getAllPo();
+
+    /**
+     * 通过id获得nation
+     * @param id
+     * @return
+     */
+    String getNationById(@Param("id") Integer id);
 
 }

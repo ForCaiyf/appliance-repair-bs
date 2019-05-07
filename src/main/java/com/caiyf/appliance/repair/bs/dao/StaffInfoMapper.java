@@ -1,6 +1,8 @@
 package com.caiyf.appliance.repair.bs.dao;
 
+import com.caiyf.appliance.repair.bs.model.po.StaffInfoPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +13,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface StaffInfoMapper {
+
+    StaffInfoPo getPoById(@Param("id") Long id);
+
 }

@@ -2,6 +2,7 @@ package com.caiyf.appliance.repair.bs.dao;
 
 import com.caiyf.appliance.repair.bs.model.po.MarriagePo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,12 @@ public interface MarriageMapper {
      * @return
      */
     List<MarriagePo> getAllPo();
+
+    /**
+     * 通过id获得marriage
+     * @param id
+     * @return
+     */
+    String getMarriageById(@Param("id") Integer id);
 
 }

@@ -8,4 +8,9 @@
         SELECT `id`, `marriage` FROM `marriage`
         WHERE `is_deleted`=0;
     </select>
+
+    <select id="getMarriageById" resultType="java.lang.String">
+        SELECT `marriage` FROM `marriage`
+        WHERE `id`=#{id} AND `is_deleted`=0;
+    </select>
 </mapper>
