@@ -2,6 +2,7 @@ package com.caiyf.appliance.repair.bs.exception;
 
 import com.caiyf.appliance.repair.bs.model.result.CodeEnum;
 import com.caiyf.appliance.repair.bs.model.result.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2019/04/10
  * @author caiyf
  */
+@Slf4j
 @ControllerAdvice
 public class ExceptionHandle {
 
@@ -25,6 +27,7 @@ public class ExceptionHandle {
         if (e instanceof BusinessException) {
             return Result.getExceptionResult(((BusinessException) e).getCodeEnum());
         }
+        log.error("", e);
         return Result.getExceptionResult(CodeEnum.UNKNOWN_ERROR);
     }
 

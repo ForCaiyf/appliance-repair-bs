@@ -1,12 +1,18 @@
 package com.caiyf.appliance.repair.bs.service;
 
 import com.caiyf.appliance.repair.bs.dao.*;
+import com.caiyf.appliance.repair.bs.exception.BusinessException;
 import com.caiyf.appliance.repair.bs.model.bo.StaffBo;
 import com.caiyf.appliance.repair.bs.model.bo.StaffInfoBo;
+import com.caiyf.appliance.repair.bs.model.bo.User;
 import com.caiyf.appliance.repair.bs.model.po.StaffInfoPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffLevelPo;
+import com.caiyf.appliance.repair.bs.model.po.StaffPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffTypePo;
+import com.caiyf.appliance.repair.bs.model.result.CodeEnum;
+import com.caiyf.appliance.repair.bs.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +21,7 @@ import java.util.List;
  * @date 2019/04/21
  * @author caiyf
  */
+@Service
 public class StaffService {
 
     @Autowired
@@ -83,6 +90,34 @@ public class StaffService {
         String sex = sexMapper.getSexById(staffInfoPo.getSexId());
         staffInfoBo.setSex(sex);
         return staffInfoBo;
+    }
+
+    /**
+     * 登录
+     * @param user
+     * @return
+     */
+    public User login(User user) {
+        if (null == user) {
+            throw new BusinessException(CodeEnum.NULL_USER);
+        }
+        if (null == user.getNum()) {
+            throw new BusinessException(CodeEnum.NULL_NUM);
+        }
+        if (null == user.getPassword()) {
+            throw new BusinessException(CodeEnum.NULL_PASSWORD);
+        }
+        StaffPo staffPo = staffMapper.getPoByNum(user.getNum());
+        if (staffPo == null) {
+            throw new BusinessException(CodeEnum.NOT_EXIST_USER);
+        }
+        String userPassword = user.getPassword();
+        String staffPassword = EncryptUtil.decrypt(staffPo.getPasswordEncrypt());
+        if (!userPassword.equals(staffPassword)) {
+            throw new BusinessException(CodeEnum.PASSWORD_ERROR);
+        }
+        user.setUserName(staffPo.getName());
+        return user;
     }
 
 }

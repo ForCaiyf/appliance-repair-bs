@@ -73,4 +73,7 @@ public class EncryptUtil {
         return decryptValue;
     }
 
+    public static void main(String[] args) {
+        System.out.println(encrypt("cyf1996"));
+    }
 }

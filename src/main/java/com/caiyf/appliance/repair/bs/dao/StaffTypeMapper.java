@@ -1,6 +1,9 @@
 package com.caiyf.appliance.repair.bs.dao;
 
 import com.caiyf.appliance.repair.bs.model.po.StaffTypePo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,6 +12,8 @@ import java.util.List;
  * @date 2019/04/21
  * @author caiyf
  */
+@Mapper
+@Repository
 public interface StaffTypeMapper {
 
     /**

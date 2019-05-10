@@ -26,6 +26,8 @@ spring:
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.caiyf.appliance.repair.bs.model.po
+  configuration:
+    map-underscore-to-camel-case: true
 pagehelper:
   helper-dialect: mysql
   reasonable: false

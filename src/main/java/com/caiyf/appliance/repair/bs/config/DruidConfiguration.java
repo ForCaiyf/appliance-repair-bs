@@ -26,7 +26,8 @@ import java.sql.SQLException;
 @ConfigurationProperties(prefix = ConfigConstant.DB_PREFIX)
 public class DruidConfiguration {
 
-    private static final String FILTER_URL_PATTERN = "/appliance-repair/*";
+    private static final String URL_PATTERN = "/*";
+    private static final String EXCLUSIONS = "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*";
 
     private String url;
     private String dataUsername;
@@ -76,7 +77,8 @@ public class DruidConfiguration {
     @Bean
     public FilterRegistrationBean generateDruidFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns(FILTER_URL_PATTERN);
+        filterRegistrationBean.addUrlPatterns(URL_PATTERN);
+        filterRegistrationBean.addInitParameter("exclusions", EXCLUSIONS);
         return filterRegistrationBean;
     }
 

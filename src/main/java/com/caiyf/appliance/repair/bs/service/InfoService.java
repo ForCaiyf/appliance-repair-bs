@@ -80,7 +80,7 @@ public class InfoService {
         List<RegionPo> regionList = regionMapper.getPoListByParentId(parentId);
         if (regionList.isEmpty()) {
             log.error("[null region error] with parentId: {}", parentId);
-            throw new BusinessException(CodeEnum.NULL_REGION_ERROR);
+            throw new BusinessException(CodeEnum.NULL_REGION);
         }
         return regionList;
     }
@@ -95,7 +95,7 @@ public class InfoService {
         RegionPo district = regionMapper.getPoById(districtId);
         if (district == null) {
             log.error("[null region error] with id: {}", districtId);
-            throw new BusinessException(CodeEnum.NULL_REGION_ERROR);
+            throw new BusinessException(CodeEnum.NULL_REGION);
         }
         RegionPo city = regionMapper.getPoById(district.getParentId());
         RegionPo province = regionMapper.getPoById(city.getParentId());

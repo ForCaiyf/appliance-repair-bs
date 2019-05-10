@@ -2,6 +2,11 @@ package com.caiyf.appliance.repair.bs.model.bo;
 
 import lombok.Data;
 
+/**
+ * @desc 员工bo
+ * @date 2019/05/05
+ * @author caiyf
+ */
 @Data
 public class StaffBo {
 
