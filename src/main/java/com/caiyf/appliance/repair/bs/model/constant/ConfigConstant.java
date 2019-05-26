@@ -10,4 +10,7 @@ public class ConfigConstant {
     /** 数据库配置前缀 */
     public static final String DB_PREFIX = "spring.datasource";
 
+    /** 微信配置前缀 */
+    public static final String WX_PREFIX = "wechat";
+
 }

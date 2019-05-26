@@ -24,7 +24,7 @@ import java.sql.SQLException;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = ConfigConstant.DB_PREFIX)
-public class DruidConfiguration {
+public class DruidConfig {
 
     private static final String URL_PATTERN = "/*";
     private static final String EXCLUSIONS = "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*";

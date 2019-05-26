@@ -16,9 +16,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfiguration {
+public class SwaggerConfig {
 
-    private static final String CONTROLLER_PACKAGE = "com.caiyf.appliance.repair.bs.controller";
+    private static final String CONTROLLER_PACKAGE = "com.caiyf.appliance.repair.bs";
 
     /**
      * 支持swagger插件

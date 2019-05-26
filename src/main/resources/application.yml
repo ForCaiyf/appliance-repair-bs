@@ -33,3 +33,11 @@ pagehelper:
   reasonable: false
   row-bounds-with-count: true
 
+# 微信端配置
+wechat:
+  session-host: https://api.weixin.qq.com/sns/jscode2session
+  app-id: wxb426b55564a446d5
+  secret: 6633ed411e224c99d71d430cd8fe1be4
+  grant_type: authorization_code
+
+

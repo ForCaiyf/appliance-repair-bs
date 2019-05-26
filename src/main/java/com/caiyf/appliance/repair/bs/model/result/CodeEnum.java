@@ -18,6 +18,9 @@ public enum CodeEnum {
     /** 工具错误码 */
     ENCRYPT_ERROR(1100, "加密错误"),
     DECRYPT_ERROR(1101, "解密错误"),
+    HTTP_GET_ERROR(1102, "GET请求错误"),
+    HTTP_POST_ERROR(1103, "POST请求错误"),
+    GET_CODE_ERROR(1104, "GET返回码错误"),
 
     /** 信息错误 */
     NULL_REGION(1200, "地区为空"),
@@ -27,7 +30,10 @@ public enum CodeEnum {
     NULL_NUM(1301, "工号为空"),
     NULL_PASSWORD(1302, "密码为空"),
     PASSWORD_ERROR(1303, "密码错误"),
-    NOT_EXIST_USER(1034, "用户不存在");
+    NOT_EXIST_USER(10304, "用户不存在"),
+
+    /** 微信相关 */
+    LOGIN_ERROR(1400, "登录失败");
 
     private Integer code;
     private String msg;
