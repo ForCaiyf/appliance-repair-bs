@@ -33,7 +33,11 @@ public enum CodeEnum {
     NOT_EXIST_USER(10304, "用户不存在"),
 
     /** 微信相关 */
-    LOGIN_ERROR(1400, "登录失败");
+    LOGIN_ERROR(1400, "登录失败"),
+    DATE_FOMMATE_ERROR(1401, "日期格式错误"),
+
+    /** 业务相关 */
+    NO_SUITABLE_REPAIRER_ERROR(1500, "暂无空闲维修员，请稍后重试");
 
     private Integer code;
     private String msg;

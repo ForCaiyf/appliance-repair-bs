@@ -14,8 +14,8 @@ public class StaffInfoPo {
     private String name;
     private Integer age;
     private Integer sexId;
-    private String idCardEncrypt;
-    private String phoneEncrypt;
+    private String idCard;
+    private String phone;
     private String email;
     private String school;
     private Integer educationId;
@@ -25,8 +25,8 @@ public class StaffInfoPo {
     private String imageUrl;
     private String address;
     private String familyContact;
-    private String familyPhoneEncrypt;
+    private String familyPhone;
     private String emergencyContact;
-    private String emergencyPhoneEncrypt;
+    private String emergencyPhone;
 
 }

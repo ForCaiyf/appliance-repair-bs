@@ -9,6 +9,11 @@
         WHERE `is_deleted`=0;
     </select>
 
+    <select id="getAllRepairPo" resultType="StaffPo">
+        SELECT * FROM `staff`
+        WHERE `is_deleted`=1 AND `is_deleted`=0;
+    </select>
+
     <select id="getPoByNum" resultType="StaffPo">
         SELECT * FROM `staff`
         WHERE `num`=#{num} AND `is_deleted`=0;

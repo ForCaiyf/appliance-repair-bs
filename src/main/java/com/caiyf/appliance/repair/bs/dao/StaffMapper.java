@@ -23,6 +23,12 @@ public interface StaffMapper {
     List<StaffPo> getAllPo();
 
     /**
+     * 获取所有维修员po
+     * @return
+     */
+    List<StaffPo> getAllRepairPo();
+
+    /**
      * 通过num获取用户
      * @param num
      * @return

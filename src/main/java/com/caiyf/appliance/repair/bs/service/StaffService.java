@@ -112,7 +112,7 @@ public class StaffService {
             throw new BusinessException(CodeEnum.NOT_EXIST_USER);
         }
         String userPassword = user.getPassword();
-        String staffPassword = EncryptUtil.decrypt(staffPo.getPasswordEncrypt());
+        String staffPassword = EncryptUtil.decrypt(staffPo.getPassword());
         if (!userPassword.equals(staffPassword)) {
             throw new BusinessException(CodeEnum.PASSWORD_ERROR);
         }

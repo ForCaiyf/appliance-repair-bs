@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caiyf.appliance.repair.bs.dao.OrderFeedbackMapper">
+    <insert id="insertPo" useGeneratedKeys="true" keyProperty="po.id">
+        INSERT INTO `order_feedback`(`cost`, `pay`, `evaluate`, `summary`)
+        VALUES ( #{po.cost}, #{po.pay}, #{po.evaluate}, #{po.summary});
+    </insert>
+    <select id="getPoById" resultType="OrderFeedback">
+        SELECT * FROM order_feedback
+        WHERE id=#{id}
+    </select>
+</mapper>

@@ -13,7 +13,7 @@ public class StaffPo {
     private Long id;
     private Integer num;
     private String name;
-    private String passwordEncrypt;
+    private String password;
     private Integer typeId;
     private Integer levelId;
     private Long infoId;
