@@ -7,4 +7,9 @@
     <select id="getPoById" resultType="StaffInfoPo">
         SELECT * FROM staff_info WHERE id=#{id} AND `is_deleted`=0;
     </select>
+    
+    <insert id="insertPo" useGeneratedKeys="true" keyProperty="po.id">
+        insert into staff_info (name, age, sex_id, id_card, phone, email, school, education_id, nation_id, marriage_id, experience, address, family_phone, emergency_phone)
+        values (#{po.name}, #{po.age}, #{po.idCard}, #{po.phone}, #{po.email}, #{po.school}, #{po.educationId}, #{po.nationId}, #{po.marriageId}, #{po.experience}, #{po.address}, #{po.familyPhone}, #{po.emergencyPhone});
+    </insert>
 </mapper>

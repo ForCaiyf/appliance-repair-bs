@@ -6,6 +6,7 @@ import com.caiyf.appliance.repair.bs.exception.BusinessException;
 import com.caiyf.appliance.repair.bs.model.constant.PatternConstant;
 import com.caiyf.appliance.repair.bs.model.po.*;
 import com.caiyf.appliance.repair.bs.model.request.JswxRequest;
+import com.caiyf.appliance.repair.bs.model.request.PjRequest;
 import com.caiyf.appliance.repair.bs.model.request.WxyyRequest;
 import com.caiyf.appliance.repair.bs.model.response.OrderDetailResponse;
 import com.caiyf.appliance.repair.bs.model.response.WeChatLoginResponse;
@@ -43,6 +44,8 @@ public class WeChatService {
     private RepairShopMapper repairShopMapper;
     @Autowired
     private OrderFeedbackMapper orderFeedbackMapper;
+    @Autowired
+    private GoodsMapper goodsMapper;
 
     /**
      * 获得登录所需值
@@ -172,6 +175,14 @@ public class WeChatService {
     }
 
     /**
+     * ‘家电推荐’处理
+     * @return
+     */
+    public List<GoodsPo> jdtj() {
+        return goodsMapper.getAllPo();
+    }
+
+    /**
      * 获取订单列表
      * @param openId
      * @return
@@ -256,6 +267,17 @@ public class WeChatService {
             orderDetailResponse.setSummary("-");
         }
         return orderDetailResponse;
+    }
+
+    /**
+     * 订单评价
+     * @param request
+     * @param id
+     */
+    public void orderPj(PjRequest request, Long id) {
+        String pj = request.getPj();
+        OrderPo orderPo = orderMapper.getPoById(id);
+        orderFeedbackMapper.setPj(orderPo.getFeedbackId() , pj);
     }
 
 }

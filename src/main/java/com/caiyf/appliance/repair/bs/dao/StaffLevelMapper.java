@@ -2,6 +2,7 @@ package com.caiyf.appliance.repair.bs.dao;
 
 import com.caiyf.appliance.repair.bs.model.po.StaffLevelPo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,5 +21,7 @@ public interface StaffLevelMapper {
      * @return
      */
     List<StaffLevelPo> getAllPo();
+
+    String getLevelById(@Param("id") Integer id);
 
 }

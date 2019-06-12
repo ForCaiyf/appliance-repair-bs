@@ -1,8 +1,10 @@
 package com.caiyf.appliance.repair.bs.wechat;
 
+import com.caiyf.appliance.repair.bs.model.po.GoodsPo;
 import com.caiyf.appliance.repair.bs.model.po.OrderPo;
 import com.caiyf.appliance.repair.bs.model.po.RepairShopPo;
 import com.caiyf.appliance.repair.bs.model.request.JswxRequest;
+import com.caiyf.appliance.repair.bs.model.request.PjRequest;
 import com.caiyf.appliance.repair.bs.model.request.WxyyRequest;
 import com.caiyf.appliance.repair.bs.model.response.OrderDetailResponse;
 import com.caiyf.appliance.repair.bs.model.response.WeChatLoginResponse;
@@ -63,6 +65,14 @@ public class WeChatController {
         return Result.getSuccessResult(response);
     }
 
+    @GetMapping("/jdtj")
+    @ApiOperation(value = "jdtj", notes = "家电推荐接口")
+    public Result jdtj() {
+        List<GoodsPo> response = weChatService.jdtj();
+        System.out.println(response);
+        return Result.getSuccessResult(response);
+    }
+
     @GetMapping("/order-list")
     @ApiOperation(value = "order-list", notes = "订单列表接口")
     public Result orderList(@RequestHeader("openId") String openId) {
@@ -75,6 +85,13 @@ public class WeChatController {
     public Result orderDetail(@RequestHeader("id") Long id) {
         OrderDetailResponse response = weChatService.getOrderDetail(id);
         return Result.getSuccessResult(response);
+    }
+
+    @PostMapping("/order-pj")
+    @ApiOperation(value = "order-pj", notes = "订单评价接口")
+    public Result orderPj(@RequestBody PjRequest request, @RequestHeader("id") Long id) {
+        weChatService.orderPj(request, id);
+        return Result.getSuccessResult(true);
     }
 
 }

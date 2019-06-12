@@ -46,4 +46,16 @@ public interface OrderMapper {
 
     Date getLastOrderTime(@Param("staffNum") Integer staffNum);
 
+    void updateFp(@Param("num") Integer num, @Param("rId") Integer repairId, @Param("id") Long id);
+
+    List<OrderPo> getFdcOrderList();
+
+    List<OrderPo> getAll();
+
+    List<OrderPo> getMyOrderList(@Param("num") Integer num);
+
+    void updateStart(@Param("id") Long id);
+
+    void updateSummary(@Param("id") Long id, @Param("fId") Long fid);
+
 }

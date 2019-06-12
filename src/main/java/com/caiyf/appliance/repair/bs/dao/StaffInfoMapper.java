@@ -16,4 +16,6 @@ public interface StaffInfoMapper {
 
     StaffInfoPo getPoById(@Param("id") Long id);
 
+    void insertPo(@Param("po") StaffInfoPo staffInfoPo);
+
 }

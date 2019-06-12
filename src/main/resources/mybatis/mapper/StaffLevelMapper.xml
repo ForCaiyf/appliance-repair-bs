@@ -8,4 +8,8 @@
         SELECT `id`, `level` FROM `staff_level`
         WHERE `is_deleted`=0;
     </select>
+
+    <select id="getLevelById" resultType="java.lang.String">
+        SELECT `level` FROM `staff_level` WHERE id=#{id}
+    </select>
 </mapper>

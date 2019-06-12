@@ -5,11 +5,14 @@
 
 <mapper namespace="com.caiyf.appliance.repair.bs.dao.OrderFeedbackMapper">
     <insert id="insertPo" useGeneratedKeys="true" keyProperty="po.id">
-        INSERT INTO `order_feedback`(`cost`, `pay`, `evaluate`, `summary`)
-        VALUES ( #{po.cost}, #{po.pay}, #{po.evaluate}, #{po.summary});
+        INSERT INTO `order_feedback`(`cost`, `pay`, `summary`)
+        VALUES ( #{po.cost}, #{po.pay}, #{po.summary});
     </insert>
     <select id="getPoById" resultType="OrderFeedback">
         SELECT * FROM order_feedback
         WHERE id=#{id}
     </select>
+    <update id="setPj">
+        UPDATE order_feedback SET evaluate=#{pj} WHERE id=#{id}
+    </update>
 </mapper>

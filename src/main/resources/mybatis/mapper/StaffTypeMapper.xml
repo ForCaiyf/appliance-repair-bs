@@ -8,4 +8,7 @@
         SELECT `id`, `type` FROM `staff_type`
         WHERE `is_deleted`=0;
     </select>
+    <select id="getTypeById" resultType="java.lang.String">
+        SELECT `type` FROM `staff_type` WHERE id=#{id}
+    </select>
 </mapper>

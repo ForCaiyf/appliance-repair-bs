@@ -27,4 +27,28 @@
     <select id="getLastOrderTime" resultType="java.util.Date">
         SELECT max(`appointment_date`) FROM `order` o, `repair_info` r  WHERE o.repair_info_id=r.id AND 4>o.`status` AND o.`repair_num`=#{staffNum}
     </select>
+
+    <update id="updateFp">
+        UPDATE `order` set staff_num=#{num}, repair_num=#{rId}, status=2 WHERE id=#{id};
+    </update>
+
+    <select id="getFdcOrderList" resultType="OrderPo">
+        SELECT * FROM `order` where status=1 ORDER BY id DESC ;
+    </select>
+
+    <select id="getFdcOrderList" resultType="OrderPo">
+        SELECT * FROM `order` ORDER BY id DESC ;
+    </select>
+
+    <select id="getMyOrderList" resultType="OrderPo">
+        SELECT * FROM `order` WHERE repair_num=#{num} ORDER BY id DESC ;
+    </select>
+
+    <update id="updateStart">
+        UPDATE `order` SET  `status`=3 WHERE id=#{id}
+    </update>
+
+    <update id="updateSummary">
+        UPDATE `order` SET  `status`=4, feedback_id=#{fId} WHERE id=#{id}
+    </update>
 </mapper>

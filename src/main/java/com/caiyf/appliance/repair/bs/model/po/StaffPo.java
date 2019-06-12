@@ -17,7 +17,7 @@ public class StaffPo {
     private Integer typeId;
     private Integer levelId;
     private Long infoId;
-    private Long agentId;
+    private Integer agentId;
     private Integer infoFilled;
 
 }

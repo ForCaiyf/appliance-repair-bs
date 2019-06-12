@@ -18,4 +18,6 @@ public interface OrderFeedbackMapper {
 
     OrderFeedback getPoById(@Param("id") Long id);
 
+    void setPj(@Param("id") Long id, @Param("pj") String pj);
+
 }

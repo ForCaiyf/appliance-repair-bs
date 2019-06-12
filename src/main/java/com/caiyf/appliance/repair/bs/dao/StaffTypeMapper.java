@@ -2,6 +2,7 @@ package com.caiyf.appliance.repair.bs.dao;
 
 import com.caiyf.appliance.repair.bs.model.po.StaffTypePo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +22,7 @@ public interface StaffTypeMapper {
      * @return
      */
     List<StaffTypePo> getAllPo();
+
+    String getTypeById(@Param("id") Integer id);
 
 }

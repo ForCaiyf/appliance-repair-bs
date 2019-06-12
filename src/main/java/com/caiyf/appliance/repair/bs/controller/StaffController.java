@@ -1,16 +1,15 @@
 package com.caiyf.appliance.repair.bs.controller;
 
 import com.caiyf.appliance.repair.bs.model.bo.User;
+import com.caiyf.appliance.repair.bs.model.po.StaffInfoPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffPo;
+import com.caiyf.appliance.repair.bs.model.request.StaffMsgResponse;
 import com.caiyf.appliance.repair.bs.model.result.Result;
 import com.caiyf.appliance.repair.bs.service.StaffService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @desc 员工相关controller
@@ -32,11 +31,23 @@ public class StaffController {
         return Result.getSuccessResult(user);
     }
 
-    @PostMapping("/init")
-    @ApiOperation(value = "init", notes = "创建员工")
-    public Result init(@RequestBody StaffPo staffPo) {
+    @GetMapping("/get-msg")
+    @ApiOperation(value = "get-msg", notes = "获取员工信息")
+    public Result getStaffMsg(@RequestHeader("num") Integer num) {
+        StaffMsgResponse response = staffService.getStaffMsg(num);
+        return Result.getSuccessResult(response);
+    }
 
+    @GetMapping("/add-staff")
+    @ApiOperation(value = "add-staff", notes = "添加员工")
+    public Result addStaff(@RequestHeader("num") Integer num, @RequestBody StaffInfoPo staffInfoPo, @RequestBody StaffPo staffPo) {
+        staffService.addStaff(num, staffInfoPo, staffPo);
         return Result.getSuccessResult(true);
+    }
+
+    @PostMapping("/find-staff")
+    public Result findStaff() {
+        return null;
     }
 
     @PostMapping("/update-password")

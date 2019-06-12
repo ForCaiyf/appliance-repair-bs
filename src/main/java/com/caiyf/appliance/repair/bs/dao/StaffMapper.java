@@ -35,4 +35,6 @@ public interface StaffMapper {
      */
     StaffPo getPoByNum(@Param("num") Integer num);
 
+    void insertPo(@Param("po") StaffPo staffPo);
+
 }

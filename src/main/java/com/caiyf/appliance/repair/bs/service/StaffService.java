@@ -9,10 +9,12 @@ import com.caiyf.appliance.repair.bs.model.po.StaffInfoPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffLevelPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffPo;
 import com.caiyf.appliance.repair.bs.model.po.StaffTypePo;
+import com.caiyf.appliance.repair.bs.model.request.StaffMsgResponse;
 import com.caiyf.appliance.repair.bs.model.result.CodeEnum;
 import com.caiyf.appliance.repair.bs.util.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -112,12 +114,61 @@ public class StaffService {
             throw new BusinessException(CodeEnum.NOT_EXIST_USER);
         }
         String userPassword = user.getPassword();
-        String staffPassword = EncryptUtil.decrypt(staffPo.getPassword());
+        String staffPassword = staffPo.getPassword();
         if (!userPassword.equals(staffPassword)) {
             throw new BusinessException(CodeEnum.PASSWORD_ERROR);
         }
         user.setUserName(staffPo.getName());
         return user;
+    }
+
+    /**
+     * 员工信息
+     * @param num
+     * @return
+     */
+    public StaffMsgResponse getStaffMsg(Integer num) {
+        StaffMsgResponse response = new StaffMsgResponse();
+        StaffPo staffPo = staffMapper.getPoByNum(num);
+        response.setName(staffPo.getName());
+        response.setNum(num);
+        String type = staffTypeMapper.getTypeById(staffPo.getTypeId());
+        String level = staffLevelMapper.getLevelById(staffPo.getLevelId());
+        response.setType(type);
+        response.setLevel(level);
+        StaffInfoPo staffInfoPo = staffInfoMapper.getPoById(staffPo.getInfoId());
+        response.setAge(staffInfoPo.getAge());
+        response.setAddress(staffInfoPo.getAddress());
+        response.setEmail(staffInfoPo.getEmail());
+        response.setEmergencyPhone(staffInfoPo.getEmergencyPhone());
+        response.setExperience(staffInfoPo.getExperience());
+        response.setIdCard(staffInfoPo.getIdCard());
+        response.setPhone(staffInfoPo.getPhone());
+        response.setSchool(staffInfoPo.getSchool());
+        String education = educationMapper.getEducationById(staffInfoPo.getEducationId());
+        String nation = nationMapper.getNationById(staffInfoPo.getNationId());
+        String marriage = marriageMapper.getMarriageById(staffInfoPo.getMarriageId());
+        String sex = sexMapper.getSexById(staffInfoPo.getSexId());
+        response.setEducation(education);
+        response.setNation(nation);
+        response.setMarriage(marriage);
+        response.setSex(sex);
+        return response;
+    }
+
+    /**
+     * 员工添加
+     * @param num
+     * @param staffInfoPo
+     * @param staffPo
+     */
+    @Transactional
+    public void addStaff(Integer num, StaffInfoPo staffInfoPo, StaffPo staffPo) {
+        staffInfoMapper.insertPo(staffInfoPo);
+        Long infoId = staffInfoPo.getId();
+        staffPo.setInfoId(infoId);
+        staffPo.setAgentId(num);
+        staffMapper.insertPo(staffPo);
     }
 
 }
